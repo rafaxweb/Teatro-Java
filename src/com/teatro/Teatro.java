@@ -1,5 +1,6 @@
 package com.teatro;
 
+import java.io.Console;
 
 public class Teatro {
 
@@ -20,11 +21,11 @@ public class Teatro {
 	
 	
 	// // Métodos
-	void mostrarTeatro() {
+	public void mostrarTeatro(Console consola) {
 		String info = "En calle " + this.calle
 				+ " local de " + this.superficie + " metros," 
 				+ " con "+ this.accesos + " accesos";
-		System.out.println(info);
+		consola.writer().println(info);
 	}
 
 

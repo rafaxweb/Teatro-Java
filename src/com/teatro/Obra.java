@@ -1,5 +1,6 @@
 package com.teatro;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 public class Obra {
@@ -18,7 +19,7 @@ public class Obra {
 	// Columnas
 	private int filas;
 	// localidades
-	ArrayList<Localidad> localidades = new ArrayList<Localidad>();
+	public ArrayList<Localidad> localidades = new ArrayList<Localidad>();
 	
 	// Constructores
 	public Obra(String titulo, String genero, int duracion, double precio, int filas, int columnas) {
@@ -33,15 +34,15 @@ public class Obra {
 	
 	
 	// // Métodos
-	void mostrarObra() {
+	public void mostrarObra(Console consola) {
 		String info = "Hoy representamos '" + this.titulo 
 				+ "', género: " + this.genero 
 				+ ", Duración: " + this.duracion;
-		System.out.println(info);
+		consola.writer().println(info);
 	}
 	
-	public void mostrarPrecio() {
-		System.out.println("Precio: " + this.precio);
+	public void mostrarPrecio(Console consola) {
+		consola.writer().println("Precio: " + this.precio);
 	}
 	
 	// Crear localidades
@@ -55,15 +56,15 @@ public class Obra {
 		
 	}
 	
-	void mostrarLocalidades() {
+	public void mostrarLocalidades(Console consola) {
 		for (Localidad localidad: this.localidades) {
 			
 			String ocupacion = (localidad.isOcupado()) ? "Ocupado" : "Libre"; 
 
-			System.out.printf("%d.%d %s    ", localidad.getFila(), localidad.getColumna(), ocupacion);
+			consola.writer().printf("%d.%d %s    ", localidad.getFila(), localidad.getColumna(), ocupacion);
 			
 			if (localidad.getColumna() == this.columnas) {
-				System.out.println("");
+				consola.writer().println("");
 			}
 		}
 	}

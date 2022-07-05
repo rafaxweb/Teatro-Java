@@ -1,5 +1,7 @@
 package com.teatro;
 
+import java.io.Console;
+
 public class Localidad {
 	
 	// // Atributos
@@ -65,16 +67,16 @@ public class Localidad {
 	}
 	
 	// Ver si la localidad está ocupada
-	boolean localidadOcupada() {
+	boolean localidadOcupada(Console consola) {
 		if (this.ocupado) {
-			System.out.println("Esta plaza está ocupada”");
+			consola.writer().println("Esta plaza está ocupada”");
 		}
 		
 		return this.ocupado;
 	}
 	
 	// Vender localidad (según el tipo hay descuento, necesita precio
-	void venderLocalidad(String nombre, int telefono, int edad, double precio) {
+	public void venderLocalidad(String nombre, int telefono, int edad, double precio) {
 		this.ocupado = true;
 		this.nombre = nombre;
 		this.telefono = telefono;
@@ -84,7 +86,7 @@ public class Localidad {
 	}
 	
 	// Cancelar localidad: añade null a la posición en la matriz
-	void cancelarLocalidad() {
+	public void cancelarLocalidad() {
 		this.ocupado = false;
 		this.nombre = null;
 		this.telefono = 0;
@@ -94,17 +96,17 @@ public class Localidad {
 	}
 	
 	// Consultar localidad (mostrar)
-	void consultarLocalidad() {
+	public void consultarLocalidad(Console consola) {
 		if (this.ocupado) { 
 			String ocupación = "Localidad " + this.fila + "." + this.columna 
 					+ " ocupada por " + this.nombre 
 					+ ", tlf: " + this.telefono 
 					+ ", Tipo: " + this.tipo 
 					+ ", Precio: " + this.precioTotal;
-			System.out.println(ocupación);
+			consola.writer().println(ocupación);
 		
 		} else {
-			System.out.println("Localidad no ocupada");
+			consola.writer().println("Localidad no ocupada");
 		}
 		
 	}
